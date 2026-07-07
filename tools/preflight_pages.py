@@ -55,7 +55,7 @@ def check_html(root: Path) -> None:
         'property="og:title"',
         'rel="manifest"',
         'rel="icon"',
-        "generated-lebron-production-1",
+        "generated-lebron-animation-2",
         "manifest.webmanifest",
     ]
     missing = [needle for needle in required if needle not in html]
@@ -102,9 +102,9 @@ def check_json(root: Path) -> None:
 def check_service_worker(root: Path) -> None:
     source = read_text(root / "sw.js")
     required = [
-        "jumpshot-v1",
+        "jumpshot-v2",
         "./assets/players/hunyuan-lebron/player_rigged.glb",
-        "./src/main.js?v=generated-lebron-production-1",
+        "./src/main.js?v=generated-lebron-animation-2",
         "caches.open",
         "request.mode === \"navigate\"",
     ]

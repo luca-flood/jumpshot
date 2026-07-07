@@ -101,6 +101,17 @@ const idealRelease = shooter.gatherTime + shooter.loadTime + shooter.jumpTime;
 const meterDuration = idealRelease * 2;
 const idealMeterPct = meterPositionForTime(idealRelease);
 const visualGreenPct = THREE.MathUtils.clamp((shooter.greenWindow / idealRelease) * 1.05, 0.06, 0.12);
+const releaseFrameSeconds = (shooter.releaseFrame ?? 42) / Math.max(1, shooter.releaseFps ?? 60);
+const animationPhaseDurations = {
+  idle: 2,
+  dribbleIdle: 1,
+  gather: shooter.gatherTime + shooter.loadTime,
+  jump: shooter.jumpTime,
+  release: shooter.releaseTime,
+  followThrough: shooter.signature?.slowMotionScale ? 0.44 * shooter.signature.slowMotionScale : 0.72,
+  land: 0.32,
+};
+const loopingPhases = new Set(["idle", "dribbleIdle"]);
 ui.greenZone.style.left = `${idealMeterPct * 100}%`;
 ui.greenZone.style.width = `${visualGreenPct * 100}%`;
 
@@ -557,6 +568,7 @@ const playerRig = {
   anchors: {},
   parts: {},
   visualTier: "placeholder",
+  animationStatus: "placeholder",
 };
 
 const generatedScanIsPrimary = shooter.visual?.primary === "generated-scan";
@@ -757,7 +769,7 @@ function releaseShot() {
   ui.fill.style.width = "0%";
   ui.needle.style.left = "0%";
   ui.needle.style.transform = "translateX(-50%) scaleY(1)";
-  setPlayerPhase("release");
+  setPlayerPhase("release", true);
   launchShot(elapsed);
 }
 
@@ -895,11 +907,7 @@ function launchShot(releaseTime) {
   const normalizedError = errorDirection * errorMagnitude;
   const meterPct = meterPositionForTime(releaseTime);
   const meterError = meterPct - idealMeterPct;
-  const start = new THREE.Vector3(
-    state.playerPos.x + state.facing.x * 0.5,
-    shooter.releaseHeight + currentJumpLift(),
-    state.playerPos.z + state.facing.z * 0.5
-  );
+  const start = getReleasePointWorld();
   const target = hoopTarget.clone();
   if (!make) {
     const missPower = THREE.MathUtils.clamp((errorMagnitude - 1) / 5, 0, 1);
@@ -1667,13 +1675,16 @@ function loadPlayerAsset() {
 
       playerRig.mixer = new THREE.AnimationMixer(playerRig.root);
       for (const clip of gltf.animations) {
-        playerRig.actions[clip.name] = playerRig.mixer.clipAction(clip);
+        const action = playerRig.mixer.clipAction(clip);
+        configurePhaseAction(action, phaseForClipName(clip.name));
+        playerRig.actions[clip.name] = action;
       }
       player.add(playerRig.root);
       playerRig.root.visible = !generatedScanIsPrimary;
       placeholderPlayer.visible = false;
       attachUniformDecals(playerRig.anchors.number ?? playerRig.root);
       if (!generatedScanIsPrimary) loadGeneratedScanAsset();
+      playerRig.animationStatus = "rig-ready";
       setPlayerPhase("idle", true);
       setFeedback("Ready", "#fff9e7");
     },
@@ -1700,6 +1711,7 @@ function loadGeneratedScanAsset() {
       scan.name = "hunyuan-selected-scan";
       const tint = new THREE.Color(shooter.team?.primary ?? "#552583").lerp(new THREE.Color("#ffffff"), 0.18);
       const isPrimary = generatedScanIsPrimary;
+      const anchorNames = shooter.visual?.anchorNames ?? {};
       scan.traverse((object) => {
         if (object.isMesh) {
           object.castShadow = true;
@@ -1722,6 +1734,9 @@ function loadGeneratedScanAsset() {
           scanMaterial.depthTest = true;
           object.material = scanMaterial;
         }
+        for (const [key, anchorName] of Object.entries(anchorNames)) {
+          if (object.name === anchorName) playerRig.anchors[key] = object;
+        }
       });
       const bounds = new THREE.Box3().setFromObject(scan);
       const size = new THREE.Vector3();
@@ -1740,7 +1755,9 @@ function loadGeneratedScanAsset() {
       playerRig.scanMixer = new THREE.AnimationMixer(scan);
       playerRig.scanActions = {};
       for (const clip of gltf.animations) {
-        playerRig.scanActions[clip.name] = playerRig.scanMixer.clipAction(clip);
+        const action = playerRig.scanMixer.clipAction(clip);
+        configurePhaseAction(action, phaseForClipName(clip.name));
+        playerRig.scanActions[clip.name] = action;
       }
       playerRig.scan = scan;
       playerRig.scanBounds = {
@@ -1751,23 +1768,29 @@ function loadGeneratedScanAsset() {
       };
       if (isPrimary) {
         playerRig.visualTier = "generated-scan";
+        playerRig.animationStatus = "generated-scan-ready";
         attachGeneratedScanDecals(scan);
         setPlayerPhase("idle", true);
         setFeedback("LeBron mesh ready", "#fff9e7");
       }
       document.documentElement.dataset.jumpshotScan = "ready";
+      document.documentElement.dataset.jumpshotAnimation = "ready";
       document.documentElement.dataset.jumpshotPrimaryVisual = isPrimary ? "generated-scan" : "rigged";
       document.documentElement.dataset.jumpshotScanHeight = String(targetHeight);
       document.documentElement.dataset.jumpshotScanClips = String(gltf.animations.length);
+      document.documentElement.dataset.jumpshotReleaseFrameSeconds = releaseFrameSeconds.toFixed(3);
       player.add(scan);
     },
     undefined,
     (error) => {
       document.documentElement.dataset.jumpshotScan = "error";
+      document.documentElement.dataset.jumpshotAnimation = "fallback";
       if (generatedScanIsPrimary) {
-        placeholderPlayer.visible = false;
-        playerRig.visualTier = "generated-scan-error";
-        setFeedback("LeBron mesh unavailable", "#ff7f66");
+        placeholderPlayer.visible = true;
+        playerRig.visualTier = "placeholder-fallback";
+        playerRig.animationStatus = "placeholder-fallback";
+        setPlayerPhase("idle", true);
+        setFeedback("Blocky fallback", "#ffd36a");
       }
       console.warn("Hunyuan scan mesh unavailable.", error);
     }
@@ -1880,6 +1903,41 @@ function posePart(part, x = 0, y = 0, z = 0) {
 function moveHeadband(y) {
   for (const partName of ["HeadbandFront", "HeadbandBack", "HeadbandLeft", "HeadbandRight"]) {
     if (playerRig.parts[partName]) playerRig.parts[partName].position.y = y;
+  }
+}
+
+function getReleasePointWorld() {
+  const anchor = playerRig.anchors.ball;
+  if (anchor) {
+    player.updateMatrixWorld(true);
+    const world = new THREE.Vector3();
+    anchor.getWorldPosition(world);
+    if (Number.isFinite(world.x) && Number.isFinite(world.y) && Number.isFinite(world.z)) {
+      world.y = Math.max(world.y, shooter.releaseHeight * 0.82);
+      return world;
+    }
+  }
+  return new THREE.Vector3(
+    state.playerPos.x + state.facing.x * 0.5,
+    shooter.releaseHeight + currentJumpLift(),
+    state.playerPos.z + state.facing.z * 0.5
+  );
+}
+
+function phaseForClipName(clipName) {
+  const entries = Object.entries(shooter.animationClips ?? {});
+  return entries.find(([, name]) => name === clipName)?.[0] ?? clipName;
+}
+
+function configurePhaseAction(action, phase) {
+  if (!action) return;
+  const duration = animationPhaseDurations[phase] ?? action.getClip().duration;
+  const looping = loopingPhases.has(phase);
+  action.enabled = true;
+  action.clampWhenFinished = !looping;
+  action.setLoop(looping ? THREE.LoopRepeat : THREE.LoopOnce, looping ? Infinity : 1);
+  if (duration > 0 && action.getClip().duration > 0) {
+    action.timeScale = action.getClip().duration / duration;
   }
 }
 
@@ -2017,6 +2075,10 @@ if (["localhost", "127.0.0.1", ""].includes(window.location.hostname)) {
       contactStats: { ...contactStats },
       best: getModeBest(),
       playerVisualTier: playerRig.visualTier,
+      animationStatus: playerRig.animationStatus,
+      activeClip: document.documentElement.dataset.jumpshotClip ?? null,
+      activeScanClipTime: playerRig.activeScanAction ? Number(playerRig.activeScanAction.time.toFixed(3)) : null,
+      releaseFrameSeconds,
       primaryVisual: document.documentElement.dataset.jumpshotPrimaryVisual ?? null,
       placeholderVisible: placeholderPlayer.visible,
       rigRootVisible: playerRig.root?.visible ?? null,

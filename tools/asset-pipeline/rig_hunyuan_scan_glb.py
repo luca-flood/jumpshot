@@ -42,42 +42,199 @@ JOINTS = [
     ("RightFoot", "RightLowerLeg", (0.0, -0.36, -0.12)),
 ]
 
+LEBRON_READY = {
+    "Hips": (-2, 0, 0),
+    "Spine": (1, 0, 0),
+    "Chest": (2, 0, -1),
+    "LeftUpperArm": (-12, 2, -16),
+    "LeftForeArm": (-12, 0, 10),
+    "RightUpperArm": (-10, -2, 16),
+    "RightForeArm": (-14, 0, -10),
+    "LeftUpperLeg": (3, 0, -1),
+    "RightUpperLeg": (-3, 0, 1),
+}
+
+LEBRON_DIP = {
+    "Hips": (-10, 0, 0),
+    "Spine": (-7, 0, 0),
+    "Chest": (-5, 0, -4),
+    "LeftUpperArm": (-30, 5, -24),
+    "LeftForeArm": (-36, 0, 20),
+    "LeftHand": (-10, 0, 8),
+    "RightUpperArm": (-34, -5, 26),
+    "RightForeArm": (-42, 0, -22),
+    "RightHand": (-6, 0, -8),
+    "LeftUpperLeg": (20, 0, -4),
+    "RightUpperLeg": (19, 0, 3),
+    "LeftLowerLeg": (-8, 0, 2),
+    "RightLowerLeg": (-8, 0, -2),
+}
+
+LEBRON_LOAD = {
+    "Hips": (-4, 0, 0),
+    "Spine": (3, 0, -2),
+    "Chest": (9, 0, -7),
+    "LeftUpperArm": (-70, 8, -30),
+    "LeftForeArm": (-58, 2, 26),
+    "LeftHand": (-8, 0, 14),
+    "RightUpperArm": (-78, -5, 18),
+    "RightForeArm": (-66, 0, -18),
+    "RightHand": (-10, 0, -12),
+    "LeftUpperLeg": (8, 0, -3),
+    "RightUpperLeg": (7, 0, 3),
+}
+
+LEBRON_SET = {
+    "Hips": (2, 0, 0),
+    "Spine": (7, 0, -3),
+    "Chest": (14, 1, -9),
+    "LeftUpperArm": (-104, 8, -34),
+    "LeftForeArm": (-78, 2, 32),
+    "LeftHand": (-12, 2, 18),
+    "RightUpperArm": (-118, -5, 12),
+    "RightForeArm": (-88, 0, -20),
+    "RightHand": (-14, 0, -18),
+    "LeftUpperLeg": (-4, 0, -4),
+    "RightUpperLeg": (-2, 0, 4),
+    "LeftLowerLeg": (5, 0, 0),
+    "RightLowerLeg": (4, 0, 0),
+}
+
+LEBRON_RELEASE = {
+    "Hips": (4, 0, 0),
+    "Spine": (9, 0, -4),
+    "Chest": (17, 2, -12),
+    "LeftUpperArm": (-88, 16, -54),
+    "LeftForeArm": (-48, 4, 38),
+    "LeftHand": (6, 12, 26),
+    "RightUpperArm": (-132, -6, 8),
+    "RightForeArm": (-92, 0, -30),
+    "RightHand": (-42, 0, -44),
+    "LeftUpperLeg": (-9, 0, -8),
+    "RightUpperLeg": (-5, 0, 5),
+    "LeftLowerLeg": (10, 0, 2),
+    "RightLowerLeg": (7, 0, -1),
+}
+
+LEBRON_FOLLOW = {
+    "Hips": (1, 0, 0),
+    "Spine": (5, 0, -2),
+    "Chest": (12, 1, -8),
+    "LeftUpperArm": (-54, 12, -58),
+    "LeftForeArm": (-28, 2, 32),
+    "LeftHand": (4, 8, 20),
+    "RightUpperArm": (-122, -3, 6),
+    "RightForeArm": (-70, 0, -25),
+    "RightHand": (-32, 0, -38),
+    "LeftUpperLeg": (-14, 0, -11),
+    "RightUpperLeg": (-8, 0, 4),
+    "LeftLowerLeg": (16, 0, 2),
+    "RightLowerLeg": (9, 0, -1),
+}
+
+LEBRON_LAND = {
+    "Hips": (-5, 0, 0),
+    "Spine": (-1, 0, 0),
+    "Chest": (2, 0, -2),
+    "LeftUpperArm": (-28, 5, -24),
+    "LeftForeArm": (-20, 0, 12),
+    "RightUpperArm": (-42, -2, 12),
+    "RightForeArm": (-20, 0, -12),
+    "LeftUpperLeg": (12, 0, -3),
+    "RightUpperLeg": (11, 0, 3),
+    "LeftLowerLeg": (-5, 0, 1),
+    "RightLowerLeg": (-5, 0, -1),
+}
+
 CLIPS = {
-    "idle": [(0.0, {}), (1.0, {"Chest": (1, 0, -1)}), (2.0, {})],
+    "idle": [(0.0, LEBRON_READY), (1.0, {"Chest": (3, 0, -1), "Spine": (2, 0, 0)}), (2.0, LEBRON_READY)],
     "dribble_idle": [
-        (0.0, {"LeftUpperArm": (-8, 0, -14), "RightUpperArm": (10, 0, 18), "LeftUpperLeg": (5, 0, 0), "RightUpperLeg": (-5, 0, 0)}),
-        (0.5, {"LeftUpperArm": (10, 0, -10), "RightUpperArm": (-12, 0, 12), "LeftUpperLeg": (-5, 0, 0), "RightUpperLeg": (5, 0, 0)}),
-        (1.0, {"LeftUpperArm": (-8, 0, -14), "RightUpperArm": (10, 0, 18), "LeftUpperLeg": (5, 0, 0), "RightUpperLeg": (-5, 0, 0)}),
+        (0.0, {**LEBRON_READY, "LeftUpperArm": (-8, 0, -16), "RightUpperArm": (12, 0, 18), "LeftUpperLeg": (5, 0, 0), "RightUpperLeg": (-5, 0, 0)}),
+        (0.5, {**LEBRON_READY, "LeftUpperArm": (10, 0, -12), "RightUpperArm": (-14, 0, 14), "LeftUpperLeg": (-5, 0, 0), "RightUpperLeg": (5, 0, 0)}),
+        (1.0, {**LEBRON_READY, "LeftUpperArm": (-8, 0, -16), "RightUpperArm": (12, 0, 18), "LeftUpperLeg": (5, 0, 0), "RightUpperLeg": (-5, 0, 0)}),
     ],
     "gather": [
-        (0.0, {}),
-        (0.18, {"Hips": (-8, 0, 0), "Spine": (-6, 0, 0), "Chest": (-5, 0, -3), "LeftUpperLeg": (18, 0, -2), "RightUpperLeg": (18, 0, 2), "LeftUpperArm": (-18, 0, -24), "RightUpperArm": (-22, 0, 22)}),
-        (0.3, {"Spine": (3, 0, 0), "Chest": (7, 0, -4), "LeftUpperArm": (-58, 4, -26), "RightUpperArm": (-68, -2, 18)}),
+        (0.0, LEBRON_READY),
+        (0.12, LEBRON_DIP),
+        (0.22, LEBRON_LOAD),
+    ],
+    "load": [
+        (0.0, LEBRON_DIP),
+        (0.18, LEBRON_LOAD),
+        (0.26, LEBRON_SET),
     ],
     "jump": [
-        (0.0, {"Spine": (3, 0, 0), "Chest": (7, 0, -4), "LeftUpperArm": (-58, 4, -26), "RightUpperArm": (-68, -2, 18)}),
-        (0.2, {"Hips": (2, 0, 0), "Spine": (8, 0, -2), "Chest": (14, 0, -6), "LeftUpperArm": (-96, 5, -18), "LeftForeArm": (-72, 0, 18), "RightUpperArm": (-112, -3, 12), "RightForeArm": (-82, 0, -18)}),
+        (0.0, LEBRON_LOAD),
+        (0.2, LEBRON_SET),
     ],
     "release": [
-        (0.0, {"Chest": (14, 0, -6), "RightUpperArm": (-112, -3, 12), "RightForeArm": (-82, 0, -18)}),
-        (0.12, {"Chest": (16, 0, -8), "LeftUpperArm": (-98, 4, -42), "RightUpperArm": (-124, -4, 8), "RightForeArm": (-88, 0, -26), "RightHand": (-34, 0, -38)}),
+        (0.0, LEBRON_SET),
+        (0.055, LEBRON_RELEASE),
+        (0.12, LEBRON_FOLLOW),
     ],
     "follow_through": [
-        (0.0, {"Chest": (16, 0, -8), "LeftUpperArm": (-98, 4, -42), "RightUpperArm": (-124, -4, 8), "RightForeArm": (-88, 0, -26), "RightHand": (-34, 0, -38)}),
-        (0.55, {"Chest": (12, 0, -5), "LeftUpperArm": (-70, 2, -48), "RightUpperArm": (-118, -2, 8), "RightForeArm": (-70, 0, -24), "RightHand": (-28, 0, -34), "LeftUpperLeg": (-12, 0, -10)}),
+        (0.0, LEBRON_RELEASE),
+        (0.24, LEBRON_FOLLOW),
+        (0.58, {**LEBRON_FOLLOW, "Chest": (8, 0, -5), "RightForeArm": (-58, 0, -20), "LeftUpperArm": (-44, 8, -42)}),
     ],
     "land": [
-        (0.0, {"Chest": (12, 0, -5), "RightUpperArm": (-90, -2, 8)}),
-        (0.25, {"Hips": (-2, 0, 0), "Chest": (1, 0, -1), "LeftUpperArm": (-8, 0, -10), "RightUpperArm": (-8, 0, 10)}),
+        (0.0, LEBRON_FOLLOW),
+        (0.18, LEBRON_LAND),
+        (0.32, LEBRON_READY),
+    ],
+    "recover": [
+        (0.0, LEBRON_LAND),
+        (0.22, LEBRON_READY),
+    ],
+    "jumpshot_lebron": [
+        (0.0, LEBRON_READY),
+        (0.16, LEBRON_DIP),
+        (0.34, LEBRON_LOAD),
+        (0.5, LEBRON_SET),
+        (0.6, LEBRON_RELEASE),
+        (0.76, LEBRON_FOLLOW),
+        (0.98, LEBRON_LAND),
+        (1.12, LEBRON_READY),
     ],
 }
 
 ROOT_TRANSLATIONS = {
-    "gather": [(0.0, (0.0, 0.0, 0.0)), (0.18, (0.0, -0.035, 0.0)), (0.3, (0.0, 0.0, -0.015))],
-    "jump": [(0.0, (0.0, 0.0, -0.015)), (0.2, (0.0, 0.12, -0.05))],
-    "release": [(0.0, (0.0, 0.12, -0.05)), (0.12, (0.0, 0.17, -0.08))],
-    "follow_through": [(0.0, (0.0, 0.17, -0.08)), (0.55, (0.0, 0.05, -0.11))],
-    "land": [(0.0, (0.0, 0.04, -0.07)), (0.25, (0.0, 0.0, 0.0))],
+    "gather": [(0.0, (0.0, 0.0, 0.0)), (0.12, (0.0, -0.045, 0.0)), (0.22, (0.0, -0.015, -0.01))],
+    "load": [(0.0, (0.0, -0.04, 0.0)), (0.18, (0.0, -0.015, -0.02)), (0.26, (0.0, 0.04, -0.035))],
+    "jump": [(0.0, (0.0, 0.0, -0.015)), (0.2, (0.0, 0.15, -0.055))],
+    "release": [(0.0, (0.0, 0.15, -0.055)), (0.055, (0.0, 0.18, -0.075)), (0.12, (0.0, 0.17, -0.085))],
+    "follow_through": [(0.0, (0.0, 0.17, -0.085)), (0.24, (0.0, 0.1, -0.11)), (0.58, (0.0, 0.04, -0.12))],
+    "land": [(0.0, (0.0, 0.05, -0.08)), (0.18, (0.0, -0.02, -0.03)), (0.32, (0.0, 0.0, 0.0))],
+    "recover": [(0.0, (0.0, -0.02, -0.03)), (0.22, (0.0, 0.0, 0.0))],
+    "jumpshot_lebron": [
+        (0.0, (0.0, 0.0, 0.0)),
+        (0.16, (0.0, -0.045, 0.0)),
+        (0.34, (0.0, -0.015, -0.02)),
+        (0.5, (0.0, 0.12, -0.055)),
+        (0.6, (0.0, 0.18, -0.08)),
+        (0.76, (0.0, 0.1, -0.11)),
+        (0.98, (0.0, -0.02, -0.03)),
+        (1.12, (0.0, 0.0, 0.0)),
+    ],
+}
+
+ANIMATION_METADATA = {
+    "version": 1,
+    "sourceReference": "youtube:nuKzWQMck-Q",
+    "style": "lebron compact high-set jumpshot",
+    "combinedClip": "jumpshot_lebron",
+    "releaseFrame": 36,
+    "releaseFps": 60,
+    "releaseTimeSeconds": 0.6,
+    "keyAttributes": [
+        "compact dip",
+        "high right-hand set point",
+        "left guide hand peel",
+        "slight shoulder turn",
+        "right wrist gooseneck",
+        "soft rearward fade",
+        "left leg follow-through kick",
+    ],
 }
 
 
@@ -139,22 +296,102 @@ def read_positions(gltf: dict, binary: bytes) -> list[tuple[float, float, float]
     return list(struct.iter_unpack("<fff", raw[: count * 12]))
 
 
-def joint_for_vertex(x: float, y: float, z: float) -> int:
-    if y > 0.68:
-        return 4
-    if y > 0.32:
-        if x < -0.22:
-            return 5 if y > 0.52 else 6
-        if x > 0.22:
-            return 8 if y > 0.52 else 9
-        return 2
-    if y > -0.1:
-        return 1
-    if x < -0.06:
-        return 11 if y > -0.55 else 12
-    if x > 0.06:
-        return 14 if y > -0.55 else 15
-    return 0
+JOINT_INDEX = {name: index for index, (name, _, _) in enumerate(JOINTS)}
+
+
+def clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
+    return max(low, min(high, value))
+
+
+def smoothstep(edge0: float, edge1: float, value: float) -> float:
+    if edge0 == edge1:
+        return 1.0 if value >= edge1 else 0.0
+    t = clamp((value - edge0) / (edge1 - edge0))
+    return t * t * (3.0 - 2.0 * t)
+
+
+def mesh_bounds(positions: list[tuple[float, float, float]]) -> dict[str, tuple[float, float, float]]:
+    mins = tuple(min(vertex[i] for vertex in positions) for i in range(3))
+    maxs = tuple(max(vertex[i] for vertex in positions) for i in range(3))
+    size = tuple(maxs[i] - mins[i] for i in range(3))
+    center = tuple((mins[i] + maxs[i]) * 0.5 for i in range(3))
+    return {"min": mins, "max": maxs, "size": size, "center": center}
+
+
+def normalize_vertex(x: float, y: float, z: float, bounds: dict[str, tuple[float, float, float]]) -> tuple[float, float, float, float]:
+    min_x, min_y, min_z = bounds["min"]
+    size_x, size_y, size_z = bounds["size"]
+    center_x, _, center_z = bounds["center"]
+    y01 = (y - min_y) / max(size_y, 0.001)
+    x_side = (x - center_x) / max(size_x * 0.5, 0.001)
+    z_side = (z - center_z) / max(size_z * 0.5, 0.001)
+    return y01, x_side, abs(x_side), z_side
+
+
+def add_weight(weights: dict[int, float], joint_name: str, amount: float) -> None:
+    if amount <= 0:
+        return
+    joint = JOINT_INDEX[joint_name]
+    weights[joint] = weights.get(joint, 0.0) + amount
+
+
+def top4_normalized(weights: dict[int, float]) -> list[tuple[int, float]]:
+    top = sorted(weights.items(), key=lambda item: item[1], reverse=True)[:4]
+    total = sum(weight for _, weight in top)
+    if total <= 0:
+        return [(JOINT_INDEX["Hips"], 1.0), (0, 0.0), (0, 0.0), (0, 0.0)]
+    normalized = [(joint, weight / total) for joint, weight in top]
+    while len(normalized) < 4:
+        normalized.append((0, 0.0))
+    return normalized
+
+
+def skin_weights_for_vertex(x: float, y: float, z: float, bounds: dict[str, tuple[float, float, float]]) -> list[tuple[int, float]]:
+    y01, x_side, x_abs, z_side = normalize_vertex(x, y, z, bounds)
+    left = x_side < 0
+    side_prefix = "Left" if left else "Right"
+    weights: dict[int, float] = {}
+
+    if y01 >= 0.82:
+        head_blend = smoothstep(0.82, 0.92, y01)
+        add_weight(weights, "Head", 0.72 + 0.25 * head_blend)
+        add_weight(weights, "Neck", 0.18 * (1.0 - head_blend))
+        add_weight(weights, "Chest", 0.1 * (1.0 - head_blend))
+        return top4_normalized(weights)
+
+    is_arm = x_abs > 0.34 and 0.22 < y01 < 0.82
+    if is_arm:
+        lower_arm_bias = smoothstep(0.58, 0.78, x_abs) * (1.0 - smoothstep(0.68, 0.82, y01))
+        hand_bias = smoothstep(0.78, 0.93, x_abs) * (1.0 - smoothstep(0.45, 0.66, y01))
+        shoulder_blend = smoothstep(0.62, 0.78, y01)
+        add_weight(weights, f"{side_prefix}UpperArm", 0.58 + 0.18 * shoulder_blend)
+        add_weight(weights, f"{side_prefix}ForeArm", 0.28 + 0.35 * lower_arm_bias)
+        add_weight(weights, f"{side_prefix}Hand", 0.08 + 0.48 * hand_bias)
+        add_weight(weights, "Chest", 0.24 * (1.0 - lower_arm_bias) * shoulder_blend)
+        return top4_normalized(weights)
+
+    if y01 >= 0.46:
+        chest = smoothstep(0.52, 0.75, y01)
+        spine = 1.0 - abs(y01 - 0.58) / 0.24
+        add_weight(weights, "Chest", 0.45 + 0.35 * chest)
+        add_weight(weights, "Spine", 0.25 + 0.35 * clamp(spine))
+        add_weight(weights, "Hips", 0.2 * (1.0 - chest))
+        return top4_normalized(weights)
+
+    if y01 >= 0.34:
+        side_weight = smoothstep(0.08, 0.38, x_abs)
+        add_weight(weights, "Hips", 0.62 * (1.0 - side_weight) + 0.22)
+        add_weight(weights, f"{side_prefix}UpperLeg", 0.55 * side_weight + 0.18)
+        add_weight(weights, "Spine", 0.18 * (1.0 - side_weight))
+        return top4_normalized(weights)
+
+    lower_leg = smoothstep(0.12, 0.28, 1.0 - y01)
+    foot = smoothstep(0.68, 0.95, abs(z_side)) * (1.0 - smoothstep(0.11, 0.19, y01))
+    add_weight(weights, f"{side_prefix}UpperLeg", 0.65 * (1.0 - lower_leg) + 0.1)
+    add_weight(weights, f"{side_prefix}LowerLeg", 0.45 + 0.45 * lower_leg)
+    add_weight(weights, f"{side_prefix}Foot", 0.55 * foot)
+    add_weight(weights, "Hips", 0.12 * (1.0 - lower_leg))
+    return top4_normalized(weights)
 
 
 def append_accessor(gltf: dict, binary: bytearray, payload: bytes, component_type: int, count: int, kind: str, name: str | None = None, minmax: tuple[list[float], list[float]] | None = None) -> int:
@@ -204,12 +441,13 @@ def inverse_bind_payload() -> bytes:
 
 def add_skin_and_weights(gltf: dict, binary: bytearray) -> None:
     positions = read_positions(gltf, binary)
+    bounds = mesh_bounds(positions)
     joints_payload = bytearray()
     weights_payload = bytearray()
     for x, y, z in positions:
-        joint = joint_for_vertex(x, y, z)
-        joints_payload.extend(struct.pack("<4H", joint, 0, 0, 0))
-        weights_payload.extend(struct.pack("<4f", 1.0, 0.0, 0.0, 0.0))
+        weights = skin_weights_for_vertex(x, y, z, bounds)
+        joints_payload.extend(struct.pack("<4H", *(joint for joint, _ in weights)))
+        weights_payload.extend(struct.pack("<4f", *(weight for _, weight in weights)))
 
     count = len(positions)
     joints_accessor = append_accessor(gltf, binary, bytes(joints_payload), UNSIGNED_SHORT, count, "VEC4", "JOINTS_0")
@@ -242,11 +480,24 @@ def add_skin_and_weights(gltf: dict, binary: bytearray) -> None:
         nodes.append({"name": name, "translation": list(translation)})
         nodes[root_index].setdefault("children", []).append(index)
 
-    mesh_node = gltf["nodes"][1]
+    mesh_node = next((node for node in gltf.get("nodes", []) if node.get("mesh") == 0), None)
+    if mesh_node is None:
+        raise ValueError("could not find mesh node for mesh 0")
     skin_index = len(gltf.setdefault("skins", []))
     gltf["skins"].append({"name": "JumpShotHumanoidSkin", "joints": joint_indices, "skeleton": root_index, "inverseBindMatrices": inverse_bind_accessor})
     mesh_node["skin"] = skin_index
     gltf["scenes"][gltf.get("scene", 0)].setdefault("nodes", []).append(root_index)
+    gltf.setdefault("extras", {})["jumpshotAutorig"] = {
+        "version": 2,
+        "method": "bounds-adaptive blended procedural weights",
+        "jointCount": len(JOINTS),
+        "maxInfluences": 4,
+        "bounds": {
+            "min": list(bounds["min"]),
+            "max": list(bounds["max"]),
+            "size": list(bounds["size"]),
+        },
+    }
 
 
 def add_animations(gltf: dict, binary: bytearray) -> None:
@@ -337,6 +588,7 @@ def main() -> int:
     gltf, binary = load_glb(args.source)
     add_skin_and_weights(gltf, binary)
     add_animations(gltf, binary)
+    gltf.setdefault("extras", {})["jumpshotAnimation"] = ANIMATION_METADATA
     write_glb(args.output, gltf, binary)
     return 0
 

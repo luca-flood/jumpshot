@@ -1,4 +1,4 @@
-const CACHE_NAME = "jumpshot-v2";
+const CACHE_NAME = "jumpshot-v3";
 
 const LOCAL_ASSETS = [
   "./",

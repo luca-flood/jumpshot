@@ -15,7 +15,7 @@
   "range": 1.18,
   "movementPenalty": 0.11,
   "consistency": 0.88,
-  "releaseFrame": 42,
+  "releaseFrame": 36,
   "releaseFps": 60,
   "signature": {
     "gatherDip": 0.14,
@@ -72,9 +72,12 @@
     "idle": "idle",
     "dribbleIdle": "dribble_idle",
     "gather": "gather",
+    "load": "load",
     "jump": "jump",
     "release": "release",
     "followThrough": "follow_through",
-    "land": "land"
+    "land": "land",
+    "recover": "recover",
+    "combined": "jumpshot_lebron"
   }
 }

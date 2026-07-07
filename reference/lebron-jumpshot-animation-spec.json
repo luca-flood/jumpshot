@@ -1,0 +1,69 @@
+{
+  "id": "lebron-jumpshot-reference-v1",
+  "sourceReference": "youtube:nuKzWQMck-Q",
+  "sourceTitle": "Did You Know LeBron Shoots With the Wrong Hand?",
+  "targetClip": "jumpshot_lebron",
+  "releaseFrame": 36,
+  "releaseFps": 60,
+  "releaseTimeSeconds": 0.6,
+  "runtimePhaseMap": {
+    "idle": "idle",
+    "dribbleIdle": "dribble_idle",
+    "gather": "gather",
+    "load": "load",
+    "jump": "jump",
+    "release": "release",
+    "followThrough": "follow_through",
+    "land": "land",
+    "recover": "recover",
+    "combined": "jumpshot_lebron"
+  },
+  "keyPoses": [
+    {
+      "phase": "idle",
+      "timeSeconds": 0,
+      "notes": "Tall base, ball ready, arms relaxed but asymmetrical."
+    },
+    {
+      "phase": "gather",
+      "timeSeconds": 0.16,
+      "notes": "Compact dip, knees load, left guide hand visibly involved."
+    },
+    {
+      "phase": "load",
+      "timeSeconds": 0.34,
+      "notes": "Ball rises quickly to forehead area; right elbow tucks and climbs."
+    },
+    {
+      "phase": "jump",
+      "timeSeconds": 0.5,
+      "notes": "High set point, slight rearward fade, shoulders start turning."
+    },
+    {
+      "phase": "release",
+      "timeSeconds": 0.6,
+      "notes": "Right-hand release, left guide hand peels away, wrist snaps into gooseneck."
+    },
+    {
+      "phase": "follow_through",
+      "timeSeconds": 0.76,
+      "notes": "Relaxed high follow-through, left arm drops away, soft leg kick."
+    },
+    {
+      "phase": "land",
+      "timeSeconds": 0.98,
+      "notes": "Feet return under hips; torso settles without over-rotating."
+    },
+    {
+      "phase": "recover",
+      "timeSeconds": 1.12,
+      "notes": "Return to readable idle/dribble stance."
+    }
+  ],
+  "visualPriorities": [
+    "The release frame must line up with ball spawn and shot-meter ideal release.",
+    "The left guide hand peel should be readable because the reference emphasizes LeBron's cross-dominance.",
+    "The high right-hand set and relaxed wrist follow-through matter more than exact lower-body mocap.",
+    "Foot sliding should be minimized in Blender/manual cleanup later."
+  ]
+}

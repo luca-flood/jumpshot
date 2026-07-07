@@ -1,0 +1,141 @@
+{
+  "path": "outputs/jumpshot/assets/players/hunyuan-lebron/player_rigged.glb",
+  "bytes": 9989364,
+  "meshIndex": 0,
+  "vertexCount": 165696,
+  "skin": {
+    "jointCount": 17,
+    "jointNames": [
+      "Hips",
+      "Spine",
+      "Chest",
+      "Neck",
+      "Head",
+      "LeftUpperArm",
+      "LeftForeArm",
+      "LeftHand",
+      "RightUpperArm",
+      "RightForeArm",
+      "RightHand",
+      "LeftUpperLeg",
+      "LeftLowerLeg",
+      "LeftFoot",
+      "RightUpperLeg",
+      "RightLowerLeg",
+      "RightFoot"
+    ],
+    "hasInverseBindMatrices": true
+  },
+  "weights": {
+    "maxInfluences": 4,
+    "influenceHistogram": {
+      "1": 7089,
+      "2": 36004,
+      "3": 93910,
+      "4": 28693
+    },
+    "blendedVertexRatio": 0.9572,
+    "badWeightSumVertices": 0,
+    "maxWeightSumError": 0.0,
+    "outOfRangeJointInfluences": 0,
+    "jointVertexCounts": {
+      "Chest": 75314,
+      "Head": 19859,
+      "Hips": 38280,
+      "LeftFoot": 3875,
+      "LeftForeArm": 34308,
+      "LeftHand": 34308,
+      "LeftLowerLeg": 17732,
+      "LeftUpperArm": 34308,
+      "LeftUpperLeg": 23745,
+      "Neck": 12770,
+      "RightFoot": 3824,
+      "RightForeArm": 29564,
+      "RightHand": 29564,
+      "RightLowerLeg": 19047,
+      "RightUpperArm": 29564,
+      "RightUpperLeg": 24351,
+      "Spine": 45186
+    },
+    "jointWeightTotals": {
+      "Chest": 21620.992,
+      "Head": 17472.088,
+      "Hips": 9525.499,
+      "LeftFoot": 715.193,
+      "LeftForeArm": 10612.205,
+      "LeftHand": 2519.356,
+      "LeftLowerLeg": 15315.039,
+      "LeftUpperArm": 19667.862,
+      "LeftUpperLeg": 3473.53,
+      "Neck": 1534.226,
+      "RightFoot": 667.705,
+      "RightForeArm": 9217.474,
+      "RightHand": 2120.967,
+      "RightLowerLeg": 16541.277,
+      "RightUpperArm": 16754.577,
+      "RightUpperLeg": 3550.239,
+      "Spine": 14386.407
+    }
+  },
+  "animations": {
+    "names": [
+      "idle",
+      "dribble_idle",
+      "gather",
+      "load",
+      "jump",
+      "release",
+      "follow_through",
+      "land",
+      "recover",
+      "jumpshot_lebron"
+    ],
+    "missingRequired": [],
+    "hasLebronCombinedClip": true
+  },
+  "extras": {
+    "jumpshotAutorig": {
+      "version": 2,
+      "method": "bounds-adaptive blended procedural weights",
+      "jointCount": 17,
+      "maxInfluences": 4,
+      "bounds": {
+        "min": [
+          -0.5539088845252991,
+          -1.000454068183899,
+          -0.24659083783626556
+        ],
+        "max": [
+          0.5455742478370667,
+          0.9941931366920471,
+          0.23571015894412994
+        ],
+        "size": [
+          1.0994831323623657,
+          1.994647204875946,
+          0.4823009967803955
+        ]
+      }
+    },
+    "jumpshotAnimation": {
+      "version": 1,
+      "sourceReference": "youtube:nuKzWQMck-Q",
+      "style": "lebron compact high-set jumpshot",
+      "combinedClip": "jumpshot_lebron",
+      "releaseFrame": 36,
+      "releaseFps": 60,
+      "releaseTimeSeconds": 0.6,
+      "keyAttributes": [
+        "compact dip",
+        "high right-hand set point",
+        "left guide hand peel",
+        "slight shoulder turn",
+        "right wrist gooseneck",
+        "soft rearward fade",
+        "left leg follow-through kick"
+      ]
+    }
+  },
+  "qualityFlags": [],
+  "rigAuditReady": true
+}

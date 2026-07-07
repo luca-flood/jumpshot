@@ -23,6 +23,8 @@ REQUIRED_FILES = [
     "src/shooters/lebron-inspired.json",
     "src/assets/basketball-assets.json",
     "assets/players/hunyuan-lebron/player_rigged.glb",
+    "reference/lebron-jumpshot-animation-spec.json",
+    "tools/asset-pipeline/audit_player_rig.py",
     ".github/workflows/deploy-pages.yml",
 ]
 
@@ -73,6 +75,11 @@ def check_profile(root: Path) -> None:
         fail("ShooterProfile must point at player_rigged.glb")
     if visual.get("scanPrimaryOpacity") != 1:
         fail("generated scan must be fully opaque in production")
+    if profile.get("releaseFrame") != 36 or profile.get("releaseFps") != 60:
+        fail("ShooterProfile release metadata must be frame 36 at 60fps")
+    clips = profile.get("animationClips", {})
+    if clips.get("combined") != "jumpshot_lebron":
+        fail("ShooterProfile must expose combined jumpshot_lebron clip")
 
 
 def check_runtime_source(root: Path) -> None:
@@ -103,7 +110,7 @@ def check_json(root: Path) -> None:
 def check_service_worker(root: Path) -> None:
     source = read_text(root / "sw.js")
     required = [
-        "jumpshot-v2",
+        "jumpshot-v3",
         "./assets/players/hunyuan-lebron/player_rigged.glb",
         "./src/main.animation-2.js",
         "caches.open",
@@ -116,8 +123,10 @@ def check_service_worker(root: Path) -> None:
 
 def check_rig_contract(root: Path) -> None:
     validator = root / "tools/asset-pipeline/validate_player_glb.py"
+    auditor = root / "tools/asset-pipeline/audit_player_rig.py"
     glb = root / "assets/players/hunyuan-lebron/player_rigged.glb"
     run([sys.executable, str(validator), str(glb), "--strict"], root)
+    run([sys.executable, str(auditor), str(glb), "--strict"], root)
 
 
 def check_payload(root: Path) -> None:

@@ -19,6 +19,7 @@ REQUIRED_FILES = [
     "404.html",
     ".nojekyll",
     "src/main.js",
+    "src/main.animation-2.js",
     "src/shooters/lebron-inspired.json",
     "src/assets/basketball-assets.json",
     "assets/players/hunyuan-lebron/player_rigged.glb",
@@ -55,7 +56,7 @@ def check_html(root: Path) -> None:
         'property="og:title"',
         'rel="manifest"',
         'rel="icon"',
-        "generated-lebron-animation-2",
+        "./src/main.animation-2.js",
         "manifest.webmanifest",
     ]
     missing = [needle for needle in required if needle not in html]
@@ -104,7 +105,7 @@ def check_service_worker(root: Path) -> None:
     required = [
         "jumpshot-v2",
         "./assets/players/hunyuan-lebron/player_rigged.glb",
-        "./src/main.js?v=generated-lebron-animation-2",
+        "./src/main.animation-2.js",
         "caches.open",
         "request.mode === \"navigate\"",
     ]

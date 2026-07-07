@@ -6,7 +6,7 @@ const LOCAL_ASSETS = [
   "./styles.css",
   "./manifest.webmanifest",
   "./icon.svg",
-  "./src/main.js?v=generated-lebron-animation-2",
+  "./src/main.animation-2.js",
   "./src/shooters/lebron-inspired.json",
   "./src/assets/basketball-assets.json",
   "./assets/players/hunyuan-lebron/player_rigged.glb",

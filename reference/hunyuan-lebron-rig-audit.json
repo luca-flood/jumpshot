@@ -1,0 +1,46 @@
+{
+  "path": "outputs/jumpshot/assets/players/hunyuan-lebron/player.glb",
+  "bytes": 5965924,
+  "stats": {
+    "meshNodes": 1,
+    "primitives": 1,
+    "skins": 0,
+    "joints": 0,
+    "skinsWithInverseBindMatrices": 0,
+    "skinnedMeshNodes": 0,
+    "nodes": 2,
+    "materials": 0,
+    "animations": 0
+  },
+  "clipNames": [],
+  "requiredClips": [
+    "dribble_idle",
+    "follow_through",
+    "gather",
+    "idle",
+    "jump",
+    "land",
+    "release"
+  ],
+  "missingClips": [
+    "dribble_idle",
+    "follow_through",
+    "gather",
+    "idle",
+    "jump",
+    "land",
+    "release"
+  ],
+  "requiredAnchors": [
+    "BallReleaseAnchor",
+    "JerseyNameAnchor",
+    "JerseyNumberAnchor"
+  ],
+  "missingAnchors": [
+    "BallReleaseAnchor",
+    "JerseyNameAnchor",
+    "JerseyNumberAnchor"
+  ],
+  "hasSkin": false,
+  "animationReady": false
+}

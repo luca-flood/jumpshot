@@ -1,0 +1,54 @@
+{
+  "profile": "../../src/shooters/lebron-inspired.json",
+  "subject": "lebron-inspired",
+  "policy": {
+    "shippingLikeness": false,
+    "notes": "Use LeBron images as private pipeline references only. Ship an inspired archetype unless likeness, team, and jersey licensing are cleared."
+  },
+  "references": {
+    "dir": "../../assets/players/lebron-inspired/source/references",
+    "required": [
+      "front_full_body.png",
+      "side_full_body.png",
+      "back_full_body.png"
+    ],
+    "optional": [
+      "head_front.png",
+      "shoe_detail.png",
+      "jersey_detail.png"
+    ]
+  },
+  "generation": {
+    "hunyuan3d": {
+      "repo": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+      "recommendedModel": "tencent/Hunyuan3D-2mini",
+      "rawOutput": "../../assets/players/lebron-inspired/source/hunyuan/raw_player.glb"
+    },
+    "trellis": {
+      "repo": "https://github.com/microsoft/TRELLIS",
+      "rawOutput": "../../assets/players/lebron-inspired/source/trellis/raw_player.glb"
+    }
+  },
+  "blender": {
+    "workFile": "../../assets/players/lebron-inspired/source/blender/lebron-inspired-cleanup.blend",
+    "autorigScript": "blender_autorig_lebron_scan.py",
+    "rawScan": "../../assets/players/hunyuan-lebron/player.glb",
+    "autorigOutput": "../../assets/players/hunyuan-lebron/player_rigged.glb",
+    "export": "../../assets/players/lebron-inspired/source/blender/player_game_ready.glb"
+  },
+  "runtime": {
+    "output": "../../assets/players/lebron-inspired/player.glb",
+    "triangleBudget": 25000,
+    "textureBudget": "1024 base color + optional 512 ORM/normal",
+    "skeleton": "Mixamo-compatible humanoid",
+    "clips": [
+      "idle",
+      "dribble_idle",
+      "gather",
+      "jump",
+      "release",
+      "follow_through",
+      "land"
+    ]
+  }
+}

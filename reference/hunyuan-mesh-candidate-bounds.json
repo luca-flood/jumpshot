@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-07-06",
+  "candidates": [
+    {
+      "name": "lebron1",
+      "player": "lebron",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/lebron/lebron1.glb",
+      "megabytes": 9.92,
+      "vertex_accessor_max_count": 288874,
+      "raw_bounds": {
+        "min": [
+          -0.985069751739502,
+          -1.000054955482483,
+          -0.14544136822223663
+        ],
+        "max": [
+          0.9809345602989197,
+          0.9945780634880066,
+          0.13329239189624786
+        ],
+        "size": [
+          1.9660043120384216,
+          1.9946330189704895,
+          0.2787337601184845
+        ]
+      },
+      "selected": false,
+      "notes": ""
+    },
+    {
+      "name": "lebron2",
+      "player": "lebron",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/lebron/lebron2.glb",
+      "megabytes": 9.47,
+      "vertex_accessor_max_count": 275944,
+      "raw_bounds": {
+        "min": [
+          -0.9540192484855652,
+          -0.9988828301429749,
+          -0.5207396745681763
+        ],
+        "max": [
+          0.9536331295967102,
+          0.9919873476028442,
+          0.4984031319618225
+        ],
+        "size": [
+          1.9076523780822754,
+          1.990870177745819,
+          1.0191428065299988
+        ]
+      },
+      "selected": false,
+      "notes": ""
+    },
+    {
+      "name": "lebron4",
+      "player": "lebron",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/lebron/lebron4.glb",
+      "megabytes": 22.67,
+      "vertex_accessor_max_count": 660378,
+      "raw_bounds": {
+        "min": [
+          -0.8335850834846497,
+          -0.9996939301490784,
+          -0.7851458191871643
+        ],
+        "max": [
+          0.8287977576255798,
+          0.994518518447876,
+          0.7803091406822205
+        ],
+        "size": [
+          1.6623828411102295,
+          1.9942124485969543,
+          1.5654549598693848
+        ]
+      },
+      "selected": false,
+      "notes": ""
+    },
+    {
+      "name": "lebron5",
+      "player": "lebron",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/lebron/lebron5.glb",
+      "megabytes": 9.98,
+      "vertex_accessor_max_count": 290712,
+      "raw_bounds": {
+        "min": [
+          -0.6768234372138977,
+          -0.9999062418937683,
+          -0.15996432304382324
+        ],
+        "max": [
+          0.6712793707847595,
+          0.9944607019424438,
+          0.15536566078662872
+        ],
+        "size": [
+          1.3481028079986572,
+          1.9943669438362122,
+          0.31532998383045197
+        ]
+      },
+      "selected": false,
+      "notes": ""
+    },
+    {
+      "name": "lebron6",
+      "player": "lebron",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/lebron/lebron6.glb",
+      "megabytes": 5.69,
+      "vertex_accessor_max_count": 165696,
+      "raw_bounds": {
+        "min": [
+          -0.5539088845252991,
+          -1.000454068183899,
+          -0.24659083783626556
+        ],
+        "max": [
+          0.5455742478370667,
+          0.9941931366920471,
+          0.23571015894412994
+        ],
+        "size": [
+          1.0994831323623657,
+          1.994647204875946,
+          0.4823009967803955
+        ]
+      },
+      "selected": true,
+      "notes": "selected: best payload/readability tradeoff"
+    },
+    {
+      "name": "shai1",
+      "player": "shai",
+      "source": "/Users/lucaflood/Hunyuan3D-2.1/generated_meshes/shai/shai1.glb",
+      "megabytes": 21.07,
+      "vertex_accessor_max_count": 613737,
+      "raw_bounds": {
+        "min": [
+          -1.0002915859222412,
+          -1.0001581907272339,
+          -0.6759028434753418
+        ],
+        "max": [
+          0.9950238466262817,
+          0.9944714307785034,
+          0.6579363942146301
+        ],
+        "size": [
+          1.995315432548523,
+          1.9946296215057373,
+          1.333839237689972
+        ]
+      },
+      "selected": false,
+      "notes": ""
+    }
+  ]
+}

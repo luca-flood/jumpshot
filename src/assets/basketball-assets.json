@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "runtimeTier": "procedural-mvp",
+  "sources": {
+    "courtMaterials": [
+      {
+        "name": "Poly Haven CC0 texture/HDRI candidates",
+        "url": "https://polyhaven.com/license",
+        "license": "CC0",
+        "status": "approved-source"
+      }
+    ],
+    "placeholderSportsAssets": [
+      {
+        "name": "Kenney Sports Pack",
+        "url": "https://kenney.nl/assets/sports-pack",
+        "license": "CC0",
+        "status": "approved-source"
+      }
+    ]
+  },
+  "assets": {
+    "court": {
+      "kind": "generated-hardwood",
+      "targetGlb": "./assets/environment/half-court.glb",
+      "roughness": 0.31,
+      "clearcoat": 0.66,
+      "lineColor": "#f4ead5",
+      "paintColor": "#4f2581"
+    },
+    "ball": {
+      "kind": "generated-pbr-ball",
+      "targetGlb": "./assets/props/basketball.glb",
+      "radius": 0.24,
+      "mass": 0.62,
+      "friction": 0.54,
+      "restitution": 0.74,
+      "linearDamping": 0.015,
+      "angularDamping": 0.04
+    },
+    "rim": {
+      "kind": "generated-hoop",
+      "targetGlb": "./assets/props/hoop.glb",
+      "friction": 0.26,
+      "restitution": 0.82
+    },
+    "backboard": {
+      "kind": "generated-glass",
+      "targetGlb": "./assets/props/backboard.glb",
+      "friction": 0.32,
+      "restitution": 0.72
+    },
+    "floor": {
+      "friction": 0.82,
+      "restitution": 0.56
+    },
+    "net": {
+      "kind": "generated-strand-net",
+      "anchors": 12,
+      "friction": 0.14,
+      "restitution": 0.18
+    }
+  },
+  "benchTargets": {
+    "desktopFps": 60,
+    "mobileFps": 45,
+    "maxInitialPayloadMb": 8
+  }
+}

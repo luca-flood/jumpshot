@@ -1,0 +1,80 @@
+{
+  "id": "lebron-inspired",
+  "name": "LeBron James",
+  "displayName": "LeBron-Inspired Wing",
+  "bodyScale": [1.08, 1.08, 1.03],
+  "gatherTime": 0.22,
+  "loadTime": 0.18,
+  "jumpTime": 0.2,
+  "releaseTime": 0.11,
+  "greenWindow": 0.055,
+  "jumpHeight": 0.56,
+  "releaseHeight": 2.55,
+  "releasePoint": [0.18, 2.55, -0.58],
+  "arc": 1.05,
+  "range": 1.18,
+  "movementPenalty": 0.11,
+  "consistency": 0.88,
+  "releaseFrame": 42,
+  "releaseFps": 60,
+  "signature": {
+    "gatherDip": 0.14,
+    "fadeBack": 0.42,
+    "leftLegKick": 0.38,
+    "rightElbowTuck": 0.22,
+    "highSetPoint": 0.22,
+    "wristSnap": 0.48,
+    "shoulderTurn": 0.1,
+    "slowMotionScale": 2.15
+  },
+  "team": {
+    "primary": "#552583",
+    "secondary": "#FDB927",
+    "trim": "#ffffff",
+    "accessory": "#1b1f25"
+  },
+  "jersey": {
+    "number": "23",
+    "name": "JAMES",
+    "trimTexture": "./assets/uniforms/lal-purple-trim.png"
+  },
+  "visual": {
+    "tier": "generated-scan",
+    "primary": "generated-scan",
+    "glb": "./assets/players/lebron-inspired/player.glb",
+    "scanGlb": "./assets/players/hunyuan-lebron/player_rigged.glb",
+    "scanHeight": 2.1,
+    "scanOpacity": 0.22,
+    "scanPrimaryOpacity": 1,
+    "scanOffset": [0, 0, 0.02],
+    "lods": [
+      "./assets/players/lebron-inspired/player_lod0.glb",
+      "./assets/players/lebron-inspired/player_lod1.glb",
+      "./assets/players/lebron-inspired/player_lod2.glb"
+    ],
+    "anchorNames": {
+      "number": "JerseyNumberAnchor",
+      "name": "JerseyNameAnchor",
+      "ball": "BallReleaseAnchor"
+    },
+    "parts": {
+      "body": "Body",
+      "head": "Head",
+      "hair": "Hair",
+      "jersey": "Jersey",
+      "shorts": "Shorts",
+      "socks": "Socks",
+      "shoes": "Shoes",
+      "accessories": "Accessories"
+    }
+  },
+  "animationClips": {
+    "idle": "idle",
+    "dribbleIdle": "dribble_idle",
+    "gather": "gather",
+    "jump": "jump",
+    "release": "release",
+    "followThrough": "follow_through",
+    "land": "land"
+  }
+}

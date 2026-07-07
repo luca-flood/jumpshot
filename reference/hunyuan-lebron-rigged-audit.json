@@ -1,0 +1,84 @@
+{
+  "path": "outputs/jumpshot/assets/players/hunyuan-lebron/player_rigged.glb",
+  "bytes": 9959308,
+  "stats": {
+    "meshNodes": 1,
+    "primitives": 1,
+    "skins": 1,
+    "joints": 17,
+    "skinsWithInverseBindMatrices": 1,
+    "skinnedMeshNodes": 1,
+    "nodes": 23,
+    "materials": 0,
+    "animations": 7
+  },
+  "animationStats": {
+    "animationChannels": {
+      "idle": 1,
+      "dribble_idle": 4,
+      "gather": 8,
+      "jump": 8,
+      "release": 6,
+      "follow_through": 7,
+      "land": 5
+    },
+    "rootMotionClips": [
+      "follow_through",
+      "gather",
+      "jump",
+      "land",
+      "release"
+    ],
+    "missingRootMotionClips": []
+  },
+  "clipNames": [
+    "dribble_idle",
+    "follow_through",
+    "gather",
+    "idle",
+    "jump",
+    "land",
+    "release"
+  ],
+  "requiredClips": [
+    "dribble_idle",
+    "follow_through",
+    "gather",
+    "idle",
+    "jump",
+    "land",
+    "release"
+  ],
+  "missingClips": [],
+  "emptyClips": [],
+  "requiredAnchors": [
+    "BallReleaseAnchor",
+    "JerseyNameAnchor",
+    "JerseyNumberAnchor"
+  ],
+  "missingAnchors": [],
+  "requiredJoints": [
+    "Chest",
+    "Head",
+    "Hips",
+    "LeftFoot",
+    "LeftForeArm",
+    "LeftHand",
+    "LeftLowerLeg",
+    "LeftUpperArm",
+    "LeftUpperLeg",
+    "RightFoot",
+    "RightForeArm",
+    "RightHand",
+    "RightLowerLeg",
+    "RightUpperArm",
+    "RightUpperLeg",
+    "Spine"
+  ],
+  "missingJoints": [],
+  "hasSkin": true,
+  "hasRequiredJoints": true,
+  "hasAnimatedClips": true,
+  "hasRootMotion": true,
+  "animationReady": true
+}

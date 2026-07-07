@@ -1,0 +1,11 @@
+{
+  "name": "JumpShot",
+  "short_name": "JumpShot",
+  "description": "A browser basketball game about mastering a LeBron-style jumpshot release.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "background_color": "#0b1116",
+  "theme_color": "#101820",
+  "orientation": "landscape"
+}

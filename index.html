@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JumpShot is a shareable browser basketball game focused on mastering a LeBron-style release with a rigged generated 3D player mesh."
+    />
+    <meta name="theme-color" content="#101820" />
+    <meta property="og:title" content="JumpShot" />
+    <meta
+      property="og:description"
+      content="Master the meter, hit the green window, and share your JumpShot score."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JumpShot" />
+    <meta name="twitter:card" content="summary" />
+    <title>JumpShot | LeBron Release Challenge</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main id="game">
+      <canvas id="court"></canvas>
+      <section class="hud" aria-label="Game status">
+        <div class="brand">
+          <span>JumpShot</span>
+          <strong>LeBron James</strong>
+        </div>
+        <div class="stats">
+          <div><span>Score</span><strong id="score">0</strong></div>
+          <div><span>Made</span><strong id="makes">0/0</strong></div>
+          <div><span>Streak</span><strong id="streak">0</strong></div>
+          <div><span>Time</span><strong id="timer">--</strong></div>
+        </div>
+      </section>
+      <section class="mode-bar" aria-label="Game modes">
+        <button type="button" class="mode-button active" data-mode="practice">Practice</button>
+        <button type="button" class="mode-button" data-mode="daily">Daily</button>
+        <button type="button" class="mode-button" data-mode="threes15">15s Threes</button>
+      </section>
+      <section class="mode-summary" aria-label="Mode summary">
+        <div><span>Best</span><strong id="bestResult">--</strong></div>
+        <div><span>Goal</span><strong id="challengeGoal">Green releases</strong></div>
+        <button type="button" id="shareResult">Share</button>
+      </section>
+      <section class="meter-wrap" aria-label="Shot meter">
+        <div class="feedback" id="feedback">Ready</div>
+        <div class="meter">
+          <div class="green-zone" id="greenZone"></div>
+          <div class="needle" id="needle"></div>
+          <div class="fill" id="meterFill"></div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./src/main.js?v=generated-lebron-production-1"></script>
+  </body>
+</html>
